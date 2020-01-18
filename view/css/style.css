@@ -1,7 +1,3 @@
-.intro-2 {
-    background: url("https://mdbootstrap.com/img/Photos/Others/img (51).jpg")no-repeat center center;
-    background-size: cover;
-}
 .view {
     margin-top: -56px;
 }
@@ -13,4 +9,48 @@ body,
 header,
 .view {
     height: 100%;
+}
+html{
+  background-image: url("../images/backgroundBody.jpg");
+  background-repeat: no-repeat;
+}
+body
+{
+  /* Fond d'écran */
+  font-style: italic;
+  background-color: rgb(250,250,250);
+  opacity: 0.9;
+  background-size: contain; /* Le fond restera fixe */
+/*Positionnement du body*/
+  width: 70%;
+  height: 80em;
+  border: 3px solid black;
+  text-align: justify;
+  margin-left: 15%;
+  /*Caractéristique du texte */
+  font-family: American Typewriter, serif;
+  font-style: normal;
+}
+/*Caractéristique de la vidéo*/
+section+section+div,embed
+{
+  width: 100%;
+  height: 40em;
+  margin-left: 5%;
+}
+ /* Caractéristique du titre*/
+#titre
+{
+  font-size: larger;
+  font-style: italic;
+  font-size: 8em;
+  margin-top: 0.5em;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0.5em;
+}
+#description
+{
+  margin-left: 2em;
+  margin-right: 2em;
 }

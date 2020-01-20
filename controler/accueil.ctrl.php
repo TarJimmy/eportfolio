@@ -1,5 +1,7 @@
 <?php
-include_once("../model/Utilisateur.class.php");
+//Incusion de la classe unique utilisateur
+include_once("../model/TardyJimmy.class.php");
 
-$user = Utilisateur::getInstance();
+$tardyJimmy = TardyJimmy::getInstance();
+
 include_once('../view/accueil.view.php');

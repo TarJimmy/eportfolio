@@ -2,9 +2,21 @@
 
 class ComponentView {
   const EST_ACCUEIL = "accueil";
+  const EST_EXP_PRO = "Expérience Professionnel";
+
+  public static function generateHead($title) { ?>
+    <head>
+    <?php include_once('../framework/bootstrap.framework.php'); ?>
+    <link rel="stylesheet" href="../view/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?=$title?></title>
+  </head>
+  <?php }
+
   public static function generateHeader($ongletActive) { ?>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Que voulez vous consultez ?</a>
+        <a class="navbar-brand" href="#">Que voulez-vous consultez ?</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,10 +26,12 @@ class ComponentView {
               <a class="nav-link
               <?php if(self::EST_ACCUEIL===$ongletActive) {?>
                 active
-              <?php } ?>" href="#">Accueil</a>
+              <?php } ?>" href="accueil.ctrl.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Expérience Professionnelle</a>
+              <a class="nav-link <?php if(self::EST_EXP_PRO===$ongletActive) {?>
+                active
+              <?php } ?>" href="experiencePro.ctrl.php">Mes expériences Professionnelles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Mon parcours scolaires</a>
@@ -81,6 +95,48 @@ class ComponentView {
     <!-- Footer Links -->
   </footer>
   <!-- Footer -->
-
-  <?php }
+<?php }
+  public static function getMois($i){
+    switch ($i) {
+      case 1:
+        return "Janvier";
+        break;
+      case 2:
+        return "Février";
+        break;
+      case 3:
+        return "Mars";
+        break;
+      case 4:
+        return "Avril";
+        break;
+      case 5:
+        return "Mai";
+        break;
+      case 6:
+        return "Juin";
+        break;
+      case 7:
+        return "Juillet";
+        break;
+      case 8:
+        return "Août";
+        break;
+      case 9:
+        return "Septembre";
+        break;
+      case 10:
+        return "Octobre";
+        break;
+      case 11:
+        return "Novembre";
+        break;
+      case 12:
+        return "Décembre";
+        break;
+      default:
+        return "Erreur : ".$i." n'est pas un mois";
+        break;
+    }
+  }
 }

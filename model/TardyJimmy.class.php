@@ -1,6 +1,6 @@
 <?php
 
-class Utilisateur {
+class TardyJimmy {
    private static $_instance = null;
    private $nom = "Tardy";
    private $prenom = "Jimmy";
@@ -20,20 +20,32 @@ class Utilisateur {
     */
    private function __construct() {}
 
-   /**
-    * Méthode qui crée l'unique instance de la classe
-    * si elle n'existe pas encore puis la retourne.
-    *
-    * @param void
-    * @return Singleton
-    */
+    /**
+     * Ecriture toString de l'objet
+     *
+     * @param void
+     * @return void
+     */
+    public function __toString() {
+      return $this->getNomComplet();
+    }
+
+    /**
+     * Méthode qui crée l'unique instance de la classe
+     * si elle n'existe pas encore puis la retourne.
+     *
+     * @param void
+     * @return TardyJimmy
+     */
+
     public static function getInstance()
      {
          if (self::$_instance === null) {
-             self::$_instance = new Utilisateur();
+             self::$_instance = new TardyJimmy();
          }
          return self::$_instance;
      }
+
    /**
     * donne l'âge courant de l'utilisateur
     *

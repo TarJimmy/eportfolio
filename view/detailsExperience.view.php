@@ -7,8 +7,9 @@
     <?php ComponentView::generateHeader(ComponentView::EST_EXP_PRO);  ?>
     <section id="titre" class="container text-center font-weight-bold">
         <h1><?=$type?> :</h1>
+        <h2><?=$detailsExp['nom']?></h2>
     </section>
-    <button type="button" class="btn btn-danger" onclick="history.go(-1)">Retour page précedente &raquo;</button>
+    <button type="button" class="btn btn-danger" onclick="history.go(-1)">&laquo; Retour page précedente</button>
     <section id="Descriptionentreprise"class="container font-weight-normal row">
       <fieldset class="form-group col">
         <legend class ="font-weight-normal">Informations sur l'entreprise</legend>
@@ -37,50 +38,15 @@
             </div>
             <div class="row">
               <p class = "font-weight-bold">1er Jour :</p>
-              <p><?=$detailsExp['DateDebut']?></p>
+              <p><?=ComponentView::ecrireDateFR($detailsExp['DateDebut'])?></p>
             </div>
             <div class="row">
               <p class = "font-weight-bold">Dernier Jour :</p>
-              <p><?=$detailsExp['DateFin']?></p>
+              <p><?=ComponentView::ecrireDateFR($detailsExp['DateFin'])?></p>
             </div>
             <div class="row">
               <p class = "font-weight-bold">Duree :</p>
-              <p>
-              <?php
-              $dateDebut = new DateTime($detailsExp['DateDebut']);
-              $dateFin = new DateTime($detailsExp['DateFin']);
-              $difference = $dateDebut->diff($dateFin);
-              $nbAnnee = $difference->y;
-              $nbMois = $difference->m;
-              $nbJours = $difference->d;
-              if ($nbAnnee>0) {
-                echo $nbAnnee." ans";
-                if($nbMois>0){
-                  echo "et ".$nbMois." mois";
-                }
-              }
-              else if ($nbMois>0){
-                echo $nbMois." mois";
-                if(round($nbJours/7.0,0)>0){
-                  echo "et ".$nbJours." semaine";
-                }
-              }
-              else {
-                $nbSemaine = round($nbJours/7.0);
-                if($nbSemaine>0){
-                  if ($nbSemaine!=4) {
-                  echo $nbSemaine." semaine";
-                  }
-                  else {
-                    echo "1 mois";
-                  }
-                }
-                else {
-                  echo $nbJours." jours";
-                }
-              }
-              ?>
-              </p>
+              <p><?=ComponentView::getPeriode($detailsExp['DateDebut'],$detailsExp['DateFin'])?></p>
             </div>
           </fieldset>
     </section>

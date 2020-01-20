@@ -10,10 +10,15 @@
         <h4>Une réalisation de <?=$tardyJimmy?> </h4>
     </section>
     <section id="description" class="containerfont-weight-normal">
-      <h2 class="font-weight-bold">Qui suis-je ?</h2>
-      <p>J'ai actuellement <?=$tardyJimmy->getAge()?> ans. Je suis un <?=$tardyJimmy->getStatus()?>.</p>
-      <h4 class="font-weight-bold">Ma plus grande passion <3 </h4>
-      <p>Je fait pas mal de sport, notamment du basket. On peut voir sur cette vidéo un extrait de mon talent : </p>
+      <div class="col">
+        <h2 class="font-weight-bold">Qui suis-je ?</h2>
+        <p>J'ai actuellement <?=$tardyJimmy->getAge()?> ans. Je suis un <?=$tardyJimmy->getStatus()?>.</p>
+        <p><a href="../view/images/CV.pdf" target="_blank">Voir mon CV</a></p>
+      </div>
+      <div class="col">
+        <h4 class="font-weight-bold">Ma plus grande passion <3 </h4>
+        <p>Je fais pas mal de sport, notamment du basket. On peut voir sur cette vidéo un extrait de mon talent : </p>
+      </div>
     </section>
     <div class="container">
     <embed src="../view/images/video_basket.mp4">

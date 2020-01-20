@@ -96,8 +96,8 @@ class ComponentView {
   </footer>
   <!-- Footer -->
 <?php }
-  public static function getMois($i){
-    switch ($i) {
+  public static function getMois($numMois){
+    switch ($numMois) {
       case 1:
         return "Janvier";
         break;
@@ -138,5 +138,50 @@ class ComponentView {
         return "Erreur : ".$i." n'est pas un mois";
         break;
     }
+  }
+  //renvoie un string de la date sous format : 15 janvier 2019
+  //$date doit etre de la forme : annee-mois-jour en nombre
+  public static function ecrireDateFR($date){
+    $tabDate = explode('-',$date);
+    return $tabDate[2].' '.self::getMois(intval($tabDate[1])).' '.$tabDate[0];
+  }
+
+  //retourne le temps exacte ou approximatif de la période entre les 2 dates
+  public static function getPeriode($dDebut,$dFin){
+    $dateDebut = new DateTime($dDebut);
+    $dateFin = new DateTime($dFin);
+    $difference = $dateDebut->diff($dateFin);
+    $nbAnnee = $difference->y;
+    $nbMois = $difference->m;
+    $nbJours = $difference->d;
+    $resultat = "";
+    if ($nbAnnee>0) {
+      $resultat = $nbAnnee." ans";
+      if($nbMois>0){
+        $resultat .= " et ".$nbMois." mois";
+      }
+    }
+    else if ($nbMois>0){
+      $resultat = $nbMois." mois";
+      $nbSemaine = round($nbJours/7.0);
+      if($nbSemaine>0){
+        $resultat .= " et ".$nbJours." semaines";
+      }
+    }
+    else {
+      $nbSemaine = round($nbJours/7.0);
+      if($nbSemaine>0){
+        if ($nbSemaine!=4) {
+          $resultat =  $nbSemaine." semaine";
+        }
+        else {
+          $resultat = "1 mois";
+        }
+      }
+      else {
+        $resultat = $nbJours." jours";
+      }
+    }
+    return $resultat;
   }
 }

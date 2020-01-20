@@ -28,6 +28,7 @@ embed
 {
   width: 90%;
   height: 100%;
+  min-height: 20em;
   margin-left: 5%;
   margin-right: : 5%;
 }

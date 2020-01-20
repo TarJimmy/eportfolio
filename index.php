@@ -1,3 +1,3 @@
 <?php
-header('Location: controler/accueil.ctrl.php');
+header('/controler/accueil.ctrl.php');
 ?>

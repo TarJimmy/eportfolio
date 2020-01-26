@@ -15,7 +15,8 @@
           <div class="col align-items-center text-center" id="contenueForm" >
             <h4 class="font-weight-bold" ><?=$formCourante['nomFormation']?></h4>
                 <h4>En <?=$formCourante['anneeDebut'].' - '.$formCourante['anneeFin']?></h4>
-                <h4>À <?=$formCourante['ville']?></h4>
+                <h4><?=$formCourante['nomLycee']?></h4>
+                <h4>De <?=$formCourante['ville']?></h4>
                 <h4>
                 <?php if (isset($formCourante['imageDiplome'])) { ?>
                   <a href="../view/images/diplomes/<?=$formCourante['imageDiplome']?>" target="_blank">Diplôme</a>

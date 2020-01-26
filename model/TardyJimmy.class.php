@@ -10,7 +10,9 @@ class TardyJimmy {
    private $emailPerso = "tardyjim26@gmail.com";
    private $emailPro = "jimmy.tardy@etu.univ-grenoble-alpes.fr";
    private $telephone = "06 44 89 15 55";
-   private $options = array("permis B", "voiture");
+   private $permis = array(
+                            "permis B"=>"voiture"
+                          );
    private $passions = array("basket", "pétanque", "mythologie grecque", "échec");
    /**
     * Constructeur de la classe
@@ -136,4 +138,15 @@ class TardyJimmy {
   public function getEmailPro() {
     return $this->emailPro;
   }
+
+  /**
+   * donne tous les permis de l'utilisateur
+   *
+   * @param void
+   * @return string
+   */
+  public function getPermis() {
+    return $this->permis;
+  }
+
 }

@@ -28,10 +28,10 @@ class DAO {
          * @param void
          * @return array
          */
-        public function getExperiencePro() {
-          $sql = "SELECT e.idExp,e.type,e.nom, e.departement, p.typeContrat, p.DateDebut, p.DateFin
-                  FROM Experience e, Exp_professionnel p
-                  where e.idExp=p.idExp and e.type='pro'
+        public function getExperiencesPros() {
+          $sql = "SELECT p.*, c.intitule, c.typeContrat
+                  FROM Exp_professionnel p, Contrats c
+                  where c.idContrat=p.idContrat
                   ORDER BY datefin DESC";
           $req = $this->db->query($sql);
           if (!$req) {
@@ -47,28 +47,14 @@ class DAO {
          * @param idExp,type
          * @return DAO
          */
-        public function getDetailsExperience($idExp, $type) {
-          //Retourne le nom exacte de la table en fonction du type passé
-            $tableType;
-            switch ($type) {
-              case 'pro':
-                $tableType = "Exp_professionnel";
-                break;
-              case 'info':
-                $tableType = "Exp_informatique";
-                break;
-            }
-            $sql = "";
-            if ($tableType=="formation"){
-              $sql = "SELECT *
-                      From Experience
-                      where idExp=?";
-            }
-            else {
-              $sql = "SELECT e.*,t.*
-                      From Experience e, $tableType t
-                      where t.idExp=e.idExp and e.idExp= ? ";
-            }
+        public function getDetailsExperiencePro($idExp) {
+            $sql = "SELECT p.DateDebut, p.DateFin, p.lieu,
+                           e.nomEntreprise, e.typeEntreprise, e.patron, e.lienSociete, e.residence,
+                           c.intitule, c.typeContrat, c.descriptionPoste, c.imageContrat
+                    From Exp_professionnel p, Entreprise e, Contrats c
+                    where p.idExp= ?
+                    and p.idContrat=c.idContrat
+                    and e.idEntreprise=c.idEntreprise";
             $reqPrepare = $this->db->prepare($sql);
             if (!$reqPrepare){
               die("Erreur dans la requète : ".$sql);
@@ -76,5 +62,17 @@ class DAO {
             $reqPrepare->execute(array($idExp));
             $result = $reqPrepare->fetchAll();
             return $result[0];
+        }
+        //Retourne toutes mes formations
+        public function getFormations(){
+          $sql = "SELECT *
+                  FROM Formation
+                  ORDER BY anneeFin DESC";
+          $req = $this->db->query($sql);
+          if (!$req) {
+            die("Erreur dans la requete : ".$sql);
+          }
+          $res = $req->fetchAll();
+          return $res;
         }
 }

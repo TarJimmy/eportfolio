@@ -3,7 +3,7 @@
 class ComponentView {
   const EST_ACCUEIL = "accueil";
   const EST_EXP_PRO = "Expérience Professionnel";
-
+  const EST_FORMATION = "Formation";
   public static function generateHead($title) { ?>
     <head>
     <?php include_once('../framework/bootstrap.framework.php'); ?>
@@ -34,7 +34,9 @@ class ComponentView {
               <?php } ?>" href="experiencePro.ctrl.php">Mes expériences Professionnelles</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Mon parcours scolaires</a>
+              <a class="nav-link <?php if(self::EST_FORMATION===$ongletActive) {?>
+                active
+              <?php } ?>" href="formation.ctrl.php">Mes Formations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Mes projets universitaires</a>

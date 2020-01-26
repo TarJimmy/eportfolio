@@ -9,7 +9,7 @@
         <h1>Mes expériences professionnelles </h1>
     </section>
     <section id="description" class="containerfont-weight-normal">
-      <div class="container">
+      <div class="container col">
         <?php
         $anneeCourante = "0";
         foreach ($mesExp as $key => $expCourante) {
@@ -26,9 +26,12 @@
               </div>
             <?php } ?>
             <!- Ecrire la description de l'expérience !-->
-            <div class="row">
-              <div class="col">
-                <h4><?php
+            <div class="row" id="caseExperience">
+              <form action="detailsExperiencePro.ctrl.php" method="post">
+                <input type="hidden" name="idExp" value="<?=$expCourante['idExp']?>">
+                <button type="submit" class="btn btn-secondary btn-sm">Voir details &raquo;</button>
+              </form>
+                <h4 id="lienDetail"><?php
                 //Si l'année de début est égal à l'année de fin, n'afficher qu'une fois l'année
                 //Sinon afficher l'année sous la forme xxxx - xxxx
                 if ($dateDebut[0]==$dateFin[0]) {
@@ -45,16 +48,10 @@
                         }
                       }
                       else {
-                        echo $expCourante['anneeDebut'].' - '.$expCourante['anneeFin'];
+                        echo $dateDebut[0].' - '.$dateFin[0];
                       }
-                      echo ' : '.$expCourante['nom']." - ".$expCourante['typeContrat']?>
+                      echo ' : '.$expCourante['intitule']." - ".$expCourante['typeContrat']?>
                   </h4>
-                  <form class="" action="detailsExperience.ctrl.php" method="post">
-                    <input type="hidden" name="idExp" value="<?=$expCourante['idExp']?>">
-                    <input type="hidden" name="type" value="<?=$expCourante['type']?>">
-                    <button type="submit" class="btn btn-primary">Voir les details&raquo;</button>
-                  </form>
-                  </div>
             </div>
         <?php } ?>
       </div>

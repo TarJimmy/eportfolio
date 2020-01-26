@@ -12,7 +12,9 @@
     <section id="description" class="containerfont-weight-normal">
       <div class="col">
         <h2 class="font-weight-bold">Qui suis-je ?</h2>
-        <p>J'ai actuellement <?=$tardyJimmy->getAge()?> ans. Je suis un <?=$tardyJimmy->getStatus()?>.</p>
+        <p>J'ai actuellement <?=$tardyJimmy->getAge()?> ans. Je suis <?=$tardyJimmy->getStatus()?>.</p>
+        <p>Je vis à <?=$tardyJimmy->getVille()?>, et j'ai le permis B avec une voiture à disposition.</p>
+
         <p><a href="../view/images/CV.pdf" target="_blank">Voir mon CV</a></p>
       </div>
       <div class="col">

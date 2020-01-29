@@ -5,7 +5,7 @@ class DAO {
         // Le type, le chemin et le nom de la base de donnée
         private $servername = 'localhost';
         private $user = 'root';
-        private $pass = 'jimmykevin';
+        private $pass = 'C'est un secret, sinon je perses mes defenses';
 
         /**
          * Constructeur de la classe, fais le lien avec la bd
